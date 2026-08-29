@@ -4,7 +4,7 @@ import { useApp } from '../../context/AppContext';
 import { formatDate } from '../../utils/helpers';
 
 export const MyAppointments: React.FC = () => {
-  const { appointments, cancelAppointment, openAppointmentModal, vehicles } = useApp();
+  const { appointments, cancelAppointment, openAppointmentModal, vehicles, t } = useApp();
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
@@ -14,7 +14,7 @@ export const MyAppointments: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black">
               <Calendar className="w-6 h-6" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold">My RTO Appointments & Visits</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold">{t.navAppointments}</h2>
           </div>
           <p className="text-xs sm:text-sm text-blue-200 max-w-xl">
             View upcoming and past RTO counter appointments. Download QR check-in entry passes for expedited counter service.
@@ -32,7 +32,7 @@ export const MyAppointments: React.FC = () => {
           className="bg-amber-400 hover:bg-amber-500 text-slate-950 text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 cursor-pointer shrink-0"
         >
           <PlusCircle className="w-4 h-4" />
-          <span>Book New Appointment</span>
+          <span>{t.bookInspectionSlot}</span>
         </button>
       </div>
 
@@ -100,7 +100,7 @@ export const MyAppointments: React.FC = () => {
                   onClick={() => cancelAppointment(apt.id)}
                   className="text-xs font-bold text-rose-600 hover:text-rose-800 hover:underline cursor-pointer"
                 >
-                  Cancel Slot
+                  {t.cancel} Slot
                 </button>
               )}
             </div>

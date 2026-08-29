@@ -21,7 +21,7 @@ interface ApplicationTrackerProps {
 }
 
 export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applications }) => {
-  const { openReceiptModal, openAppointmentModal } = useApp();
+  const { openReceiptModal, openAppointmentModal, t } = useApp();
   const [expandedAppId, setExpandedAppId] = useState<string | null>(
     applications.length > 0 ? applications[0].id : null
   );
@@ -30,9 +30,9 @@ export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applicat
     return (
       <div className="bg-white rounded-2xl border border-slate-200 p-8 text-center shadow-xs">
         <FileText className="w-12 h-12 text-slate-300 mx-auto mb-3" />
-        <h3 className="text-sm font-bold text-slate-800">No Active Applications</h3>
+        <h3 className="text-sm font-bold text-slate-800">{t.activeAppsHeading}</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1">
-          When you submit a vehicle registration, ownership transfer, or driving licence application, its real-time 5-stage tracking progress will appear here.
+          {t.activeAppsSubheading}
         </p>
       </div>
     );
@@ -101,7 +101,7 @@ export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applicat
                   >
                     {app.currentStage === 'APPROVED' && <CheckCircle2 className="w-3.5 h-3.5" />}
                     {app.currentStage === 'SCRUTINY' && <Clock className="w-3.5 h-3.5" />}
-                    <span>Stage: {app.currentStage}</span>
+                    <span>{t.step}: {app.currentStage}</span>
                   </span>
                   <span className="block text-[10px] text-slate-400 mt-0.5">
                     Est. Completion: {formatDate(app.estimatedCompletionDate)}
@@ -124,7 +124,7 @@ export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applicat
                 {/* Visual Stage Steps Line */}
                 <div>
                   <h4 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">
-                    Real-Time Application Progress Timeline
+                    {t.activeAppsHeading}
                   </h4>
 
                   <div className="relative">
@@ -195,7 +195,7 @@ export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applicat
                     <h5 className="text-xs font-bold text-slate-900 mb-2 flex items-center justify-between">
                       <span>Submitted Documents ({app.documents.length})</span>
                       <span className="text-[10px] text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">
-                        DigiLocker Linked
+                        {t.digiLockerBadge}
                       </span>
                     </h5>
                     <ul className="space-y-2 text-xs">
@@ -267,7 +267,7 @@ export const ApplicationTracker: React.FC<ApplicationTrackerProps> = ({ applicat
                         className="flex-1 bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold py-2 rounded-lg transition flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
                       >
                         <Download className="w-3.5 h-3.5" />
-                        <span>Download Tax Receipt</span>
+                        <span>{t.downloadReceipt}</span>
                       </button>
 
                       {app.appointment && (

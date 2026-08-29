@@ -62,7 +62,7 @@ export const generateAppNumber = (prefix = 'PAR'): string => {
 
 export const generateReceiptNumber = (): string => {
   const rand = Math.floor(1000000 + Math.random() * 9000000);
-  return `MORTH-REC-2026-${rand}`;
+  return `REC-2026-${rand}`;
 };
 
 export const generateTxnId = (): string => {
@@ -70,15 +70,61 @@ export const generateTxnId = (): string => {
 };
 
 /**
- * Text-to-speech announcer for accessibility
+ * Mapping of 10 supported Indian languages to their standard BCP-47 speech tags
  */
-export const speakText = (text: string, lang = 'en-IN') => {
+export const LANG_BCP47_MAP: Record<string, string> = {
+  en: 'en-IN',
+  hi: 'hi-IN',
+  ta: 'ta-IN',
+  te: 'te-IN',
+  kn: 'kn-IN',
+  ml: 'ml-IN',
+  bn: 'bn-IN',
+  mr: 'mr-IN',
+  gu: 'gu-IN',
+  pa: 'pa-IN',
+};
+
+/**
+ * Instantly cancel and stop any active speech synthesis output
+ */
+export const stopSpeaking = () => {
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     try {
       window.speechSynthesis.cancel();
+    } catch {
+      // Ignore fallback
+    }
+  }
+};
+
+/**
+ * Text-to-speech announcer for accessibility, localized to the selected language
+ */
+export const speakText = (text: string, lang = 'en') => {
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    try {
+      window.speechSynthesis.cancel();
+      if (!text || text.trim() === '') return;
+
+      const bcp47 = LANG_BCP47_MAP[lang] || (lang.includes('-') ? lang : 'en-IN');
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = lang;
+      utterance.lang = bcp47;
       utterance.rate = 0.95;
+
+      // Select localized voice if browser provides one for this locale
+      const voices = window.speechSynthesis.getVoices();
+      if (voices && voices.length > 0) {
+        const matched = voices.find(
+          (v) =>
+            v.lang.toLowerCase() === bcp47.toLowerCase() ||
+            v.lang.toLowerCase().startsWith(bcp47.slice(0, 2).toLowerCase())
+        );
+        if (matched) {
+          utterance.voice = matched;
+        }
+      }
+
       window.speechSynthesis.speak(utterance);
     } catch {
       // Graceful fallback if speech synthesis is blocked or unavailable

@@ -27,7 +27,7 @@ import {
   RTO_OFFICES,
 } from '../data/mockData';
 import { TRANSLATIONS, TranslationDictionary } from '../i18n/translations';
-import { speakText, safeLoadFromStorage } from '../utils/helpers';
+import { speakText, stopSpeaking, safeLoadFromStorage } from '../utils/helpers';
 
 interface PaymentModalState {
   isOpen: boolean;
@@ -232,19 +232,34 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       setActiveNavTab('home');
     }
     if (speechEnabled) {
-      speakText(`Switched mode to ${newRole === 'officer' ? 'RTO Scrutiny Officer' : newRole === 'admin' ? 'Administrator' : 'Citizen Dashboard'}`);
+      speakText(`Switched mode to ${newRole === 'officer' ? 'RTO Scrutiny Officer' : newRole === 'admin' ? 'Administrator' : 'Citizen Dashboard'}`, activeLang);
     }
   };
 
   const setActiveLang = (lang: LanguageCode) => {
     setActiveLangState(lang);
     localStorage.setItem('pn_lang', lang);
+    if (speechEnabled) {
+      const langNames: Record<LanguageCode, string> = {
+        en: 'Language set to English',
+        hi: 'भाषा हिन्दी में बदली गई',
+        ta: 'மொழி தமிழுக்கு மாற்றப்பட்டது',
+        te: 'భాష తెలుగులోకి మార్చబడింది',
+        kn: 'ಭಾಷೆ ಕನ್ನಡಕ್ಕೆ ಬದಲಾಗಿದೆ',
+        ml: 'ഭാഷ മലയാളത്തിലേക്ക് മാറ്റി',
+        bn: 'ভাষা বাংলায় পরিবর্তিত হয়েছে',
+        mr: 'भाषा मराठीत बदलली आहे',
+        gu: 'ભાષા ગુજરાતીમાં બદલાઈ ગઈ',
+        pa: 'ਭਾਸ਼ਾ ਪੰਜਾਬੀ ਵਿੱਚ ਬਦਲੀ ਗਈ',
+      };
+      speakText(langNames[lang] || 'Language changed', lang);
+    }
   };
 
   const toggleHighContrast = () => {
     setHighContrast((prev) => {
       const next = !prev;
-      if (speechEnabled) speakText(next ? 'High Contrast Mode Enabled' : 'Normal Display Restored');
+      if (speechEnabled) speakText(next ? 'High Contrast Mode Enabled' : 'Normal Display Restored', activeLang);
       return next;
     });
   };
@@ -260,7 +275,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const toggleSpeechEnabled = () => {
     setSpeechEnabled((prev) => {
       const next = !prev;
-      if (next) speakText('Parivahan Voice Assistant and Screen Reader Activated');
+      if (next) {
+        speakText('Voice Assistant and Screen Reader Activated', activeLang);
+      } else {
+        stopSpeaking();
+      }
       return next;
     });
   };

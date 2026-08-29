@@ -13,11 +13,11 @@ export const MobileNav: React.FC = () => {
 
   const items = [
     { id: 'home', label: t.navHome, icon: Home },
-    { id: 'garage', label: 'Garage', icon: Car },
-    { id: 'saathi', label: 'Saathi AI', icon: Sparkles, isSpecial: true },
-    { id: 'dl', label: 'Licence', icon: CreditCard },
-    { id: 'vehicle-services', label: 'Services', icon: Wrench },
-    { id: 'public', label: 'Public', icon: Search },
+    { id: 'garage', label: t.navGarage, icon: Car },
+    { id: 'saathi', label: t.askSaathi, icon: Sparkles, isSpecial: true },
+    { id: 'dl', label: t.navDL, icon: CreditCard },
+    { id: 'vehicle-services', label: t.navVehicleServices, icon: Wrench },
+    { id: 'public', label: t.navPublicServices, icon: Search },
   ];
 
   return (

@@ -221,7 +221,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
                 className="w-full text-left px-3 py-2 hover:bg-blue-50 text-slate-800 flex items-center gap-2 cursor-pointer"
               >
                 <Download className="w-4 h-4 text-blue-700" />
-                <span>View / Download Digital RC</span>
+                <span>{t.viewDownloadRC}</span>
               </button>
               <button
                 onClick={() => {
@@ -231,7 +231,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
                 className="w-full text-left px-3 py-2 hover:bg-blue-50 text-slate-800 flex items-center gap-2 cursor-pointer"
               >
                 <Calendar className="w-4 h-4 text-blue-700" />
-                <span>Book RTO Inspection Slot</span>
+                <span>{t.bookInspectionSlot}</span>
               </button>
               <button
                 onClick={() => {
@@ -242,7 +242,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
                 className="w-full text-left px-3 py-2 hover:bg-blue-50 text-slate-800 flex items-center gap-2 cursor-pointer"
               >
                 <RefreshCw className="w-4 h-4 text-blue-700" />
-                <span>Change Address in RC</span>
+                <span>{t.changeAddressRC}</span>
               </button>
               <button
                 onClick={() => {
@@ -253,7 +253,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
                 className="w-full text-left px-3 py-2 hover:bg-blue-50 text-slate-800 flex items-center gap-2 cursor-pointer"
               >
                 <Share2 className="w-4 h-4 text-blue-700" />
-                <span>Apply Interstate NOC</span>
+                <span>{t.applyInterstateNOC}</span>
               </button>
             </div>
           )}
