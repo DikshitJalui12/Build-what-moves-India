@@ -26,6 +26,7 @@ export const OwnershipTransferWizard: React.FC<{ onCancel: () => void }> = ({ on
     saveFormDraft,
     getFormDraft,
     clearFormDraft,
+    t,
   } = useApp();
 
   const draft = getFormDraft('ownership-transfer');
@@ -310,7 +311,7 @@ export const OwnershipTransferWizard: React.FC<{ onCancel: () => void }> = ({ on
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 1: Select Registered Vehicle to Transfer
+                {t.step} 1: Select Registered Vehicle to Transfer
               </h3>
               <p className="text-xs text-slate-500">
                 Choose the vehicle currently registered in your name that you wish to transfer.
@@ -371,7 +372,7 @@ export const OwnershipTransferWizard: React.FC<{ onCancel: () => void }> = ({ on
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 2: Enter Buyer Identity & e-KYC Verification
+                {t.step} 2: Enter Buyer Identity & e-KYC Verification
               </h3>
               <p className="text-xs text-slate-500">
                 The buyer will receive a secure digital consent request to confirm transfer.
@@ -470,7 +471,7 @@ export const OwnershipTransferWizard: React.FC<{ onCancel: () => void }> = ({ on
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 3: Review Auto-Generated Statutory Forms (Form 29 & 30)
+                {t.step} 3: Review Auto-Generated Statutory Forms (Form 29 & 30)
               </h3>
               <p className="text-xs text-slate-500">
                 The system has pre-populated official Central Motor Vehicle Rules transfer documents with digital e-Signs.
@@ -520,7 +521,7 @@ export const OwnershipTransferWizard: React.FC<{ onCancel: () => void }> = ({ on
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 4: Statutory RTO Fee Breakdown & BharatKosh Checkout
+                {t.step} 4: Statutory RTO Fee Breakdown & BharatKosh Checkout
               </h3>
               <p className="text-xs text-slate-500">
                 Review transparent statutory fee items before proceeding to government payment gateway.

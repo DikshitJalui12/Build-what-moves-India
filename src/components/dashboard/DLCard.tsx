@@ -190,7 +190,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
               {dl.hasIDP && (
                 <span className="inline-flex items-center gap-1 bg-amber-500 text-slate-950 text-[11px] font-extrabold px-2 py-0.5 rounded-full shadow-2xs">
                   <Globe className="w-3 h-3" />
-                  IDP Endorsed (Valid till {formatDate(dl.idpValidTill || '')})
+                  {t.idpEndorsed} {formatDate(dl.idpValidTill || '')})
                 </span>
               )}
             </div>
@@ -200,7 +200,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
           <div className="relative bg-linear-to-br from-slate-50 to-slate-100 rounded-2xl p-5 border-2 border-slate-300 shadow-md">
             <div className="flex items-center justify-between border-b border-slate-200 pb-2 mb-3">
               <h4 className="text-xs font-bold text-slate-800 uppercase">
-                Driving Licence Endorsements & Address
+                {t.dlBackTitle}
               </h4>
               <QrCode className="w-5 h-5 text-slate-600" />
             </div>
@@ -209,14 +209,14 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
               <div className="sm:col-span-8 space-y-3">
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 block uppercase">
-                    Permanent Address:
+                    {t.permanentAddress}:
                   </span>
                   <p className="font-semibold text-slate-800 leading-relaxed">{dl.address}</p>
                 </div>
 
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 block uppercase mb-1">
-                    Class Endorsement Log:
+                    {t.classEndorsementLog}:
                   </span>
                   <table className="w-full text-left text-[11px] border border-slate-200 rounded-lg overflow-hidden bg-white">
                     <thead className="bg-slate-100 text-slate-600">
@@ -246,7 +246,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
                   alt="QR Code"
                   className="w-24 h-24 mb-1.5"
                 />
-                <span className="text-[9px] font-mono text-slate-400">MoRTH QR Verified</span>
+                <span className="text-[9px] font-mono text-slate-400">QR Verified</span>
               </div>
             </div>
           </div>
@@ -264,7 +264,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
             className="bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-2xs transition flex items-center gap-1 cursor-pointer"
           >
             <Globe className="w-3.5 h-3.5" />
-            <span>Apply for IDP</span>
+            <span>{t.applyIDP}</span>
           </button>
           <button
             onClick={() => {
@@ -274,7 +274,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
             className="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1 cursor-pointer"
           >
             <PlusCircle className="w-3.5 h-3.5 text-blue-700" />
-            <span>Add Vehicle Class</span>
+            <span>{t.addVehicleClass}</span>
           </button>
         </div>
 
@@ -287,14 +287,14 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
             className="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg transition flex items-center gap-1 cursor-pointer"
           >
             <RefreshCw className="w-3.5 h-3.5 text-amber-600" />
-            <span>Renew DL</span>
+            <span>{t.renewDL}</span>
           </button>
           <button
             onClick={() => setActiveNavTab('vault')}
             className="bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-2xs transition flex items-center gap-1 cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Download Digital DL</span>
+            <span>{t.downloadDigitalDL}</span>
           </button>
         </div>
       </div>

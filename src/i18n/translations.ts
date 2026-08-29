@@ -138,7 +138,19 @@ export interface TranslationDictionary {
   viewCard: string;
   downloadSlip: string;
   hackathonPrototypeBadge: string;
+  // DL Card
+  dlBackTitle: string;
+  permanentAddress: string;
+  classEndorsementLog: string;
+  idpEndorsed: string;
+  applyIDP: string;
+  addVehicleClass: string;
+  renewDL: string;
+  downloadDigitalDL: string;
+  // Syncing
+  syncing: string;
 }
+
 
 export const LANGUAGES: { code: LanguageCode; label: string; native: string }[] = [
   { code: 'en', label: 'English', native: 'English' },
@@ -292,6 +304,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'View Card',
     downloadSlip: 'Download Slip',
     hackathonPrototypeBadge: 'Innovation Prototype • Synthetic Mock Data',
+    dlBackTitle: 'Driving Licence Endorsements & Address',
+    permanentAddress: 'Permanent Address',
+    classEndorsementLog: 'Class Endorsement Log',
+    idpEndorsed: 'IDP Endorsed (Valid till',
+    applyIDP: 'Apply for IDP',
+    addVehicleClass: 'Add Vehicle Class',
+    renewDL: 'Renew DL',
+    downloadDigitalDL: 'Download Digital DL',
+    syncing: 'Syncing...',
   },
   hi: {
     portalName: 'परिवहन नेक्स्ट',
@@ -431,6 +452,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'कार्ड देखें',
     downloadSlip: 'रसीद डाउनलोड करें',
     hackathonPrototypeBadge: 'इनोवेशन प्रोटोटाइप • सिंथेटिक मॉक डेटा',
+    dlBackTitle: 'ड्राइविंग लाइसेंस पृष्ठांकन एवं पता',
+    permanentAddress: 'स्थायी पता',
+    classEndorsementLog: 'वाहन श्रेणी पृष्ठांकन लॉग',
+    idpEndorsed: 'आईडीपी अनुमोदित (वैधता',
+    applyIDP: 'आईडीपी के लिए आवेदन करें',
+    addVehicleClass: 'वाहन श्रेणी जोड़ें',
+    renewDL: 'डीएल नवीनीकरण',
+    downloadDigitalDL: 'डिजिटल डीएल डाउनलोड',
+    syncing: 'सिंक हो रहा है...',
   },
   ta: {
     portalName: 'பரிவாஹன் நெக்ஸ்ட்',
@@ -570,6 +600,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'அட்டை பார்க்க',
     downloadSlip: 'ரசீது பதிவிறக்குக',
     hackathonPrototypeBadge: 'மாதிரி வடிவம் • செயற்கை தரவு',
+    dlBackTitle: 'ஓட்டுநர் உரிமம் சான்றும் முகவரியும்',
+    permanentAddress: 'நிரந்தர முகவரி',
+    classEndorsementLog: 'வாகன வகுப்பு பதிவேட்டு',
+    idpEndorsed: 'IDP அங்கீகரிக்கப்பட்டது (வரை',
+    applyIDP: 'IDP விண்ணப்பிக்கவும்',
+    addVehicleClass: 'வாகன வகுப்பு சேர்க்கவும்',
+    renewDL: 'DL புதுப்பிக்கவும்',
+    downloadDigitalDL: 'டிஜிட்டல் DL பதிவிறக்குக',
+    syncing: 'ஒத்திசைக்கிறது...',
   },
   te: {
     portalName: 'పరివాహన్ నెక్స్ట్',
@@ -709,6 +748,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'కార్డు చూడండి',
     downloadSlip: 'రసీదు డౌన్‌లోడ్',
     hackathonPrototypeBadge: 'ప్రోటోటైప్ • మోక్ డేటా',
+    dlBackTitle: 'డ్రైవింగ్ లైసెన్స్ అనుమతులు మరియు చిరునామా',
+    permanentAddress: 'శాశ్వత చిరునామా',
+    classEndorsementLog: 'వాహన తరగతి నమోదు లాగ్',
+    idpEndorsed: 'IDP ఆమోదించబడింది (వరకు',
+    applyIDP: 'IDP కోసం దరఖాస్తు',
+    addVehicleClass: 'వాహన తరగతి జోడించండి',
+    renewDL: 'DL పునరుద్ధరించండి',
+    downloadDigitalDL: 'డిజిటల్ DL డౌన్‌లోడ్',
+    syncing: 'సింక్ అవుతోంది...',
   },
   kn: {
     portalName: 'ಪರಿವಾಹನ ನೆಕ್ಸ್ಟ್',
@@ -848,6 +896,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'ಕಾರ್ಡ್ ನೋಡಿ',
     downloadSlip: 'ರಶೀದಿ ಡೌನ್‌ಲೋಡ್',
     hackathonPrototypeBadge: 'ಮಾದರಿ • ಕೃತಕ ಡೇಟಾ',
+    dlBackTitle: 'ಡ್ರೈವಿಂಗ್ ಲೈಸೆನ್ಸ್ ಅನುಮೋದನೆ ಮತ್ತು ವಿಳಾಸ',
+    permanentAddress: 'ಶಾಶ್ವತ ವಿಳಾಸ',
+    classEndorsementLog: 'ವಾಹನ ವರ್ಗ ನೋಂದಣಿ ಲಾಗ್',
+    idpEndorsed: 'IDP ಅನುಮೋದಿಸಲಾಗಿದೆ (ವರೆಗೆ',
+    applyIDP: 'IDP ಗಾಗಿ ಅರ್ಜಿ',
+    addVehicleClass: 'ವಾಹನ ವರ್ಗ ಸೇರಿಸಿ',
+    renewDL: 'DL ನವೀಕರಿಸಿ',
+    downloadDigitalDL: 'ಡಿಜಿಟಲ್ DL ಡೌನ್‌ಲೋಡ್',
+    syncing: 'ಸಿಂಕ್ ಆಗುತ್ತಿದೆ...',
   },
   ml: {
     portalName: 'പരിവാഹൻ നെക്സ്റ്റ്',
@@ -987,6 +1044,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'കാർഡ് കാണുക',
     downloadSlip: 'രസീത് ഡൗൺലോഡ്',
     hackathonPrototypeBadge: 'മാതൃക • കൃത്രിമ ഡാറ്റ',
+    dlBackTitle: 'ഡ്രൈവിംഗ് ലൈസൻസ് അനുമതികളും വിലാസവും',
+    permanentAddress: 'സ്ഥിര വിലാസം',
+    classEndorsementLog: 'വാഹന ക്ലാസ് ലോഗ്',
+    idpEndorsed: 'IDP അംഗീകരിച്ചു (വരെ',
+    applyIDP: 'IDP അപേക്ഷിക്കുക',
+    addVehicleClass: 'വാഹന ക്ലാസ് ചേർക്കുക',
+    renewDL: 'DL പുതുക്കുക',
+    downloadDigitalDL: 'ഡിജിറ്റൽ DL ഡൗൺലോഡ്',
+    syncing: 'സമന്വയിക്കുന്നു...',
   },
   bn: {
     portalName: 'পরিবহন নেক্সট',
@@ -1126,6 +1192,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'কার্ড দেখুন',
     downloadSlip: 'রসিদ ডাউনলোড',
     hackathonPrototypeBadge: 'প্রোটোটাইপ • সিন্থেটিক ডেটা',
+    dlBackTitle: 'ড্রাইভিং লাইসেন্স অনুমোদন ও ঠিকানা',
+    permanentAddress: 'স্থায়ী ঠিকানা',
+    classEndorsementLog: 'যানবাহন শ্রেণি অনুমোদন লগ',
+    idpEndorsed: 'IDP অনুমোদিত (পর্যন্ত',
+    applyIDP: 'IDP আবেদন করুন',
+    addVehicleClass: 'যানবাহন শ্রেণি যোগ করুন',
+    renewDL: 'DL নবায়ন করুন',
+    downloadDigitalDL: 'ডিজিটাল DL ডাউনলোড',
+    syncing: 'সিঙ্ক হচ্ছে...',
   },
   mr: {
     portalName: 'परिवहन नेक्स्ट',
@@ -1265,6 +1340,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'कार्ड पहा',
     downloadSlip: 'पावती डाउनलोड',
     hackathonPrototypeBadge: 'प्रोटोटाइप • नमुना डेटा',
+    dlBackTitle: 'वाहन चालक परवाना अनुमोदन आणि पत्ता',
+    permanentAddress: 'कायमचा पत्ता',
+    classEndorsementLog: 'वाहन श्रेणी नोंदणी लॉग',
+    idpEndorsed: 'IDP मंजूर (पर्यंत',
+    applyIDP: 'IDP साठी अर्ज करा',
+    addVehicleClass: 'वाहन श्रेणी जोडा',
+    renewDL: 'DL नूतनीकरण',
+    downloadDigitalDL: 'डिजिटल DL डाउनलोड',
+    syncing: 'सिंक होत आहे...',
   },
   gu: {
     portalName: 'પરિવહન નેક્સ્ટ',
@@ -1404,6 +1488,15 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'કાર્ડ જુઓ',
     downloadSlip: 'રસીદ ડાઉનલોડ',
     hackathonPrototypeBadge: 'પ્રોટોટાઇપ • નમૂના ડેટા',
+    dlBackTitle: 'ડ્રાઇવિંગ લાઇસન્સ મંજૂરી અને સરનામું',
+    permanentAddress: 'કાયમી સરનામું',
+    classEndorsementLog: 'વાહન વર્ગ નોંધ',
+    idpEndorsed: 'IDP મંજૂર (સુધી',
+    applyIDP: 'IDP માટે અરજી',
+    addVehicleClass: 'વાહન વર્ગ ઉમેરો',
+    renewDL: 'DL નવીનીકરણ',
+    downloadDigitalDL: 'ડિજિટલ DL ડાઉનલોડ',
+    syncing: 'સિંક થઈ રહ્યું છે...',
   },
   pa: {
     portalName: 'ਪਰਿਵਾਹਨ ਨੈਕਸਟ',
@@ -1543,5 +1636,14 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     viewCard: 'ਕਾਰਡ ਦੇਖੋ',
     downloadSlip: 'ਰਸੀਦ ਡਾਊਨਲੋਡ',
     hackathonPrototypeBadge: 'ਪ੍ਰੋਟੋਟਾਈਪ • ਨਕਲੀ ਡੇਟਾ',
+    dlBackTitle: 'ਡਰਾਈਵਿੰਗ ਲਾਇਸੈਂਸ ਮਨਜ਼ੂਰੀ ਅਤੇ ਪਤਾ',
+    permanentAddress: 'ਸਥਾਈ ਪਤਾ',
+    classEndorsementLog: 'ਵਾਹਨ ਸ਼੍ਰੇਣੀ ਰਿਕਾਰਡ',
+    idpEndorsed: 'IDP ਮਨਜ਼ੂਰ (ਤੱਕ',
+    applyIDP: 'IDP ਲਈ ਅਰਜ਼ੀ',
+    addVehicleClass: 'ਵਾਹਨ ਸ਼੍ਰੇਣੀ ਜੋੜੋ',
+    renewDL: 'DL ਨਵੀਨੀਕਰਨ',
+    downloadDigitalDL: 'ਡਿਜੀਟਲ DL ਡਾਊਨਲੋਡ',
+    syncing: 'ਸਿੰਕ ਹੋ ਰਿਹਾ ਹੈ...',
   },
 };

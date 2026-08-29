@@ -22,6 +22,7 @@ export const RCRenewalWizard: React.FC<{ onCancel: () => void }> = ({ onCancel }
     openPaymentModal,
     openReceiptModal,
     openAppointmentModal,
+    t,
   } = useApp();
 
   const [step, setStep] = useState(1);
@@ -237,7 +238,7 @@ export const RCRenewalWizard: React.FC<{ onCancel: () => void }> = ({ onCancel }
         {step === 1 && (
           <div className="space-y-4">
             <h3 className="text-sm font-bold text-slate-900">
-              Step 1: Choose Vehicle & Select Fitness Inspection Slot
+              {t.step} 1: Choose Vehicle & Select Fitness Inspection Slot
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

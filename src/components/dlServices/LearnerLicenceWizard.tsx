@@ -20,7 +20,7 @@ import { LEARNER_MOCK_QUESTIONS } from '../../data/mockData';
 import { generateAppNumber } from '../../utils/helpers';
 
 export const LearnerLicenceWizard: React.FC<{ onCancel: () => void }> = ({ onCancel }) => {
-  const { user, addApplication, openPaymentModal, openReceiptModal } = useApp();
+  const { user, addApplication, openPaymentModal, openReceiptModal, t } = useApp();
 
   const [step, setStep] = useState(1);
   const [selectedClasses, setSelectedClasses] = useState<string[]>(['MCWG', 'LMV']);
@@ -287,7 +287,7 @@ export const LearnerLicenceWizard: React.FC<{ onCancel: () => void }> = ({ onCan
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 1: Aadhaar Paperless e-KYC Auto-Fill
+                {t.step} 1: Aadhaar Paperless e-KYC Auto-Fill
               </h3>
               <p className="text-xs text-slate-500">
                 Your authenticated citizen credentials from UIDAI have been securely pre-populated.
@@ -329,7 +329,7 @@ export const LearnerLicenceWizard: React.FC<{ onCancel: () => void }> = ({ onCan
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 2: Select Vehicle Classes for Learner Licence
+                {t.step} 2: Select Vehicle Classes for Learner Licence
               </h3>
               <p className="text-xs text-slate-500">
                 Choose the categories of vehicles you intend to learn and drive.
@@ -548,7 +548,7 @@ export const LearnerLicenceWizard: React.FC<{ onCancel: () => void }> = ({ onCan
           <div className="space-y-6">
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-1">
-                Step 4: Statutory LL Issuance Fee
+                {t.step} 4: Statutory LL Issuance Fee
               </h3>
               <p className="text-xs text-slate-500">
                 Statutory fee for issuing Learner’s Licence across selected classes ({selectedClasses.join(', ')}).

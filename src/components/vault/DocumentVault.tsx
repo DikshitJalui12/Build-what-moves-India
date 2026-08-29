@@ -65,7 +65,7 @@ export const DocumentVault: React.FC = () => {
             className="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 cursor-pointer"
           >
             <RefreshCw className={`w-4 h-4 ${isSyncing ? 'animate-spin' : ''}`} />
-            <span>{isSyncing ? 'Syncing...' : t.syncDigiLocker}</span>
+            <span>{isSyncing ? t.syncing : t.syncDigiLocker}</span>
           </button>
         </div>
       </div>

@@ -495,7 +495,7 @@ export const INITIAL_VAULT_DOCS: DocumentVaultItem[] = [
     linkedIdentifier: 'DL-0120150045678',
     issueDate: '2015-08-12',
     validTill: '2038-06-23',
-    issuer: 'Ministry of Road Transport & Highways, Govt. of India',
+    issuer: 'Parivahan Next — Digital Transport Services Platform',
     isDigiLockerVerified: true,
     fileSize: '1.4 MB',
     fileFormat: 'DIGITAL_CARD',
