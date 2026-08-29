@@ -67,7 +67,7 @@ export const CitizenDashboard: React.FC = () => {
                 </span>
               </div>
               <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight">
-                {t.welcomeCitizen}, {user?.name || 'Citizen'}
+                {t.welcomeUser}, {user?.name || 'Citizen'}
               </h2>
               <p className="text-xs sm:text-sm text-blue-200 mt-1">
                 Aadhaar: <span className="font-mono">{user?.aadhaar}</span> • {user?.district}, {user?.state} ({user?.pincode})
@@ -104,11 +104,10 @@ export const CitizenDashboard: React.FC = () => {
             </div>
             <div>
               <h3 className="font-extrabold text-slate-900 text-sm sm:text-base">
-                Action Required: {expiringVehicles.length} Document Expiries & {pendingChallans.length} Traffic Fine Pending
+                {t.actionRequiredTitle} ({expiringVehicles.length + pendingChallans.length})
               </h3>
               <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">
-                Renew your Insurance/PUC promptly to prevent hefty roadside penalties. Pending fine amount:{' '}
-                <strong className="text-rose-700">₹{totalChallanAmount}</strong>.
+                {t.actionRequiredDesc} {pendingChallans.length > 0 && <span className="text-rose-700 font-bold ml-1">₹{totalChallanAmount}</span>}
               </p>
             </div>
           </div>
@@ -119,7 +118,7 @@ export const CitizenDashboard: React.FC = () => {
                 onClick={() => setActiveNavTab('public')}
                 className="bg-rose-700 hover:bg-rose-800 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-xs cursor-pointer"
               >
-                Pay Challan (₹{totalChallanAmount}) &rarr;
+                {t.payChallans} (₹{totalChallanAmount}) &rarr;
               </button>
             )}
             {expiringVehicles.length > 0 && (
@@ -130,7 +129,7 @@ export const CitizenDashboard: React.FC = () => {
                 }}
                 className="bg-slate-900 hover:bg-slate-950 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition shadow-xs cursor-pointer"
               >
-                Renew Documents &rarr;
+                {t.renewRC} &rarr;
               </button>
             )}
           </div>
@@ -242,13 +241,13 @@ export const CitizenDashboard: React.FC = () => {
           <div>
             <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
               <Car className="w-5 h-5 text-blue-900" />
-              <span>{t.myVehiclesTitle}</span>
+              <span>{t.myVehiclesHeading}</span>
               <span className="text-xs bg-blue-100 text-blue-900 font-bold px-2 py-0.5 rounded-full">
-                {vehicles.length} Active
+                {vehicles.length} {t.valid}
               </span>
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              All vehicles registered under your Aadhaar identity across India
+              {t.myVehiclesSubheading}
             </p>
           </div>
 
@@ -260,7 +259,7 @@ export const CitizenDashboard: React.FC = () => {
             className="bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold px-3.5 py-2 rounded-xl transition flex items-center gap-1.5 cursor-pointer shadow-xs"
           >
             <PlusCircle className="w-4 h-4 text-amber-400" />
-            <span>Register New Vehicle</span>
+            <span>{t.registerNewVehicle}</span>
           </button>
         </div>
 
@@ -277,10 +276,10 @@ export const CitizenDashboard: React.FC = () => {
           <div>
             <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
               <CreditCard className="w-5 h-5 text-blue-900" />
-              <span>{t.myDLTitle}</span>
+              <span>{t.myDLHeading}</span>
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              Digital Smartcard Licence synchronized with National Sarathi Database
+              {t.myDLSubheading}
             </p>
           </div>
         </div>
@@ -294,13 +293,13 @@ export const CitizenDashboard: React.FC = () => {
           <div>
             <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
               <FileCheck2 className="w-5 h-5 text-blue-900" />
-              <span>{t.activeApplicationsTitle}</span>
+              <span>{t.activeAppsHeading}</span>
               <span className="text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded-full">
-                {applications.length} Active Requests
+                {applications.length}
               </span>
             </h3>
             <p className="text-xs text-slate-500 mt-0.5">
-              5-stage end-to-end transparent scrutiny & dispatch tracker
+              {t.activeAppsSubheading}
             </p>
           </div>
         </div>

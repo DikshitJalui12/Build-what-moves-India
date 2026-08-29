@@ -120,11 +120,11 @@ export const DLServicesHub: React.FC = () => {
             <CreditCard className="w-6 h-6" />
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold">
-            Driving Licence Services Hub (Sarathi Next)
+            {t.dlServicesTitle}
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-blue-200 max-w-2xl leading-relaxed">
-          National unified licensing portal. Complete e-KYC learner tests, track permanent licence appointments, and download digital smartcards with DigiLocker.
+          {t.dlServicesSubtitle}
         </p>
 
         {/* Search */}

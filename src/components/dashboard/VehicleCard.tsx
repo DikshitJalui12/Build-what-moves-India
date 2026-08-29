@@ -105,7 +105,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Insurance */}
           <div className={`p-2 rounded-xl border text-left ${insBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">{t.insuranceValid}</span>
+              <span className="text-[10px] font-bold opacity-75">{t.insurance}</span>
               <Shield className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
@@ -119,7 +119,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* PUC Pollution */}
           <div className={`p-2 rounded-xl border text-left ${pucBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">{t.pucValid}</span>
+              <span className="text-[10px] font-bold opacity-75">{t.puc}</span>
               <RefreshCw className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
@@ -133,7 +133,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Fitness Certificate */}
           <div className={`p-2 rounded-xl border text-left ${fitBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">{t.fitnessValid}</span>
+              <span className="text-[10px] font-bold opacity-75">{t.fitness}</span>
               <FileText className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
@@ -147,10 +147,10 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Road Tax Status */}
           <div className="p-2 rounded-xl border bg-blue-50 text-blue-900 border-blue-200 text-left">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">{t.taxPaid}</span>
+              <span className="text-[10px] font-bold opacity-75">{t.roadTax}</span>
               <Landmark className="w-3 h-3 text-blue-700" />
             </div>
-            <div className="font-bold text-xs leading-tight">LIFETIME PAID</div>
+            <div className="font-bold text-xs leading-tight">{t.lifetimePaid}</div>
             <div className="text-[10px] opacity-75 mt-0.5 truncate">
               Receipt: {vehicle.tax.receiptNo}
             </div>

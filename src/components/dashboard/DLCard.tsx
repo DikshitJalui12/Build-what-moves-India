@@ -21,7 +21,7 @@ interface DLCardProps {
 }
 
 export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
-  const { setActiveNavTab, setActiveServiceWizard } = useApp();
+  const { setActiveNavTab, setActiveServiceWizard, t } = useApp();
   const [showBackSide, setShowBackSide] = useState(false);
 
   if (!dl) {
@@ -30,7 +30,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
         <CreditCard className="w-12 h-12 text-slate-300 mx-auto mb-3" />
         <h3 className="text-sm font-bold text-slate-800">No Driving Licence Linked</h3>
         <p className="text-xs text-slate-500 max-w-sm mx-auto mt-1 mb-4">
-          You don’t have an active driving licence linked to your Aadhaar. You can apply for a new Learner’s Licence directly online.
+          You don’t have an active driving licence linked to your digital profile.
         </p>
         <button
           onClick={() => {
@@ -39,7 +39,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
           }}
           className="bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold px-4 py-2 rounded-xl transition shadow-xs cursor-pointer"
         >
-          Apply for Learner’s Licence &rarr;
+          {t.learnerLicence} &rarr;
         </button>
       </div>
     );
@@ -52,19 +52,19 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
         <div className="flex items-center gap-2">
           <CreditCard className="w-5 h-5 text-amber-400" />
           <span className="font-extrabold text-sm tracking-wide">
-            UNION OF INDIA DRIVING LICENCE
+            {t.dlSmartcard}
           </span>
         </div>
         <div className="flex items-center gap-2">
           <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-            DigiLocker Verified
+            {t.digiLockerBadge}
           </span>
           <button
             onClick={() => setShowBackSide(!showBackSide)}
             className="text-[11px] bg-white/10 hover:bg-white/20 text-white font-bold px-2 py-0.5 rounded-md transition cursor-pointer"
           >
-            Flip to {showBackSide ? 'Front' : 'Back'}
+            {t.flipCard}
           </button>
         </div>
       </div>
@@ -87,10 +87,10 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
                 </div>
                 <div>
                   <h4 className="text-xs font-black text-blue-950 uppercase tracking-wide">
-                    Government of NCT of Delhi
+                    {t.portalName}
                   </h4>
                   <p className="text-[10px] text-slate-500 font-bold uppercase">
-                    Transport Department • Driving Licence
+                    {t.dlSmartcard}
                   </p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
                   />
                 </div>
                 <div className="bg-rose-100 text-rose-900 border border-rose-300 text-[10px] font-black px-2 py-0.5 rounded-full">
-                  Blood Grp: {dl.bloodGroup}
+                  {t.bloodGroup}: {dl.bloodGroup}
                 </div>
               </div>
 
@@ -121,7 +121,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
               <div className="sm:col-span-9 space-y-2 text-xs">
                 <div>
                   <span className="text-[10px] font-bold text-slate-400 block uppercase">
-                    Licence Number (डीएल संख्या):
+                    {t.licenceNo}:
                   </span>
                   <span className="text-sm font-black text-blue-950 font-mono tracking-wider">
                     {dl.licenceNo}
@@ -130,22 +130,22 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 block">NAME:</span>
+                    <span className="text-[10px] font-bold text-slate-400 block">{t.name}:</span>
                     <span className="font-bold text-slate-900 uppercase">{dl.holderName}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 block">S/W/D OF:</span>
+                    <span className="text-[10px] font-bold text-slate-400 block">{t.fatherName}:</span>
                     <span className="font-bold text-slate-800">{dl.fatherName}</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 block">DATE OF BIRTH:</span>
+                    <span className="text-[10px] font-bold text-slate-400 block">{t.dob}:</span>
                     <span className="font-bold text-slate-800">{formatDate(dl.dateOfBirth)}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] font-bold text-slate-400 block">ISSUE DATE:</span>
+                    <span className="text-[10px] font-bold text-slate-400 block">{t.issueDate}:</span>
                     <span className="font-bold text-slate-800">{formatDate(dl.issueDate)}</span>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
                 <div className="grid grid-cols-2 gap-2 bg-emerald-50/80 p-2 rounded-xl border border-emerald-200">
                   <div>
                     <span className="text-[10px] font-bold text-emerald-800 block uppercase">
-                      Valid Till (Non-Transport):
+                      {t.validTill}:
                     </span>
                     <span className="font-extrabold text-emerald-950">
                       {formatDate(dl.validTillNonTransport)}
@@ -161,7 +161,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
                   </div>
                   <div>
                     <span className="text-[10px] font-bold text-emerald-800 block uppercase">
-                      Issuing RTO:
+                      {t.issuingAuthority}:
                     </span>
                     <span className="font-extrabold text-emerald-950 truncate block">
                       {dl.rtoName}
@@ -174,7 +174,7 @@ export const DLCard: React.FC<DLCardProps> = ({ dl }) => {
             {/* Authorized Classes Ribbon */}
             <div className="mt-4 pt-3 border-t border-amber-200 flex flex-wrap items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <span className="text-[11px] font-bold text-slate-500">Authorized:</span>
+                <span className="text-[11px] font-bold text-slate-500">{t.authorizedClasses}:</span>
                 {dl.authorizedClasses.map((cls) => (
                   <span
                     key={cls.classCode}

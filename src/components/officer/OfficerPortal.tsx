@@ -21,13 +21,13 @@ import { formatDate, formatCurrency } from '../../utils/helpers';
 import confetti from 'canvas-confetti';
 
 export const OfficerPortal: React.FC = () => {
-  const { applications, updateApplicationStage, user } = useApp();
+  const { applications, updateApplicationStage, user, t } = useApp();
 
   const [activeTab, setActiveTab] = useState<'queue' | 'scrutiny' | 'analytics' | 'test_entry'>('queue');
   const [selectedApp, setSelectedApp] = useState<Application | null>(
     applications.length > 0 ? applications[0] : null
   );
-  const [officerRemarks, setOfficerRemarks] = useState('All statutory documents verified and found compliant with CMVR 1989.');
+  const [officerRemarks, setOfficerRemarks] = useState('All statutory documents verified and found compliant with transport rules.');
   const [testCandidateDl, setTestCandidateDl] = useState('DL01-LL-2026-009812');
   const [testResult, setTestResult] = useState<'PASS' | 'FAIL'>('PASS');
   const [testTrackNotes, setTestTrackNotes] = useState('Completed 8-track, parallel parking, and gradient restart test with zero sensor penalties.');
@@ -48,7 +48,7 @@ export const OfficerPortal: React.FC = () => {
       selectedApp.id,
       selectedApp.currentStage,
       officerRemarks,
-      'M. K. Kadam (ARTO)'
+      'M. K. Kadam (Officer)'
     );
 
     // Pick next app
@@ -61,35 +61,37 @@ export const OfficerPortal: React.FC = () => {
     updateApplicationStage(
       selectedApp.id,
       'REJECTED',
-      officerRemarks || 'Document discrepancy observed.',
-      'M. K. Kadam (ARTO)'
+      officerRemarks || 'Application rejected due to document discrepancy.',
+      'M. K. Kadam (Officer)'
     );
+    const remaining = applications.filter((a) => a.id !== selectedApp.id);
+    setSelectedApp(remaining.length > 0 ? remaining[0] : null);
   };
 
-  const handleRecordTestScore = (e: React.FormEvent) => {
+  const handleTestScoreSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setTestEntrySuccess(true);
-    setTimeout(() => setTestEntrySuccess(false), 3000);
+    setTimeout(() => setTestEntrySuccess(false), 4000);
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
       {/* Officer Header */}
-      <div className="bg-linear-to-r from-slate-900 via-blue-950 to-slate-950 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+      <div className="bg-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border border-slate-800">
         <div>
           <div className="flex items-center gap-2 mb-2">
             <span className="bg-amber-500 text-slate-950 text-[10px] font-black px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-              RTO Official Enforcement Desk
+              Enforcement & Scrutiny Desk
             </span>
             <span className="text-blue-300 text-xs font-semibold">
               Jurisdiction: RTO Andheri (MH-02) / North Delhi (DL-01)
             </span>
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold">
-            RTO Officer Verification & Scrutiny Portal
+            {t.officerTitle}
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            Logged In Officer: <strong>Shri M. K. Kadam</strong> (Assistant Regional Transport Officer)
+            Logged In Officer: <strong>Shri M. K. Kadam</strong>
           </p>
         </div>
 
@@ -320,7 +322,7 @@ export const OfficerPortal: React.FC = () => {
             </p>
           </div>
 
-          <form onSubmit={handleRecordTestScore} className="space-y-4">
+          <form onSubmit={handleTestScoreSubmit} className="space-y-4">
             <div>
               <label className="block font-bold text-slate-700 mb-1">
                 Candidate Learner Licence / Application Number

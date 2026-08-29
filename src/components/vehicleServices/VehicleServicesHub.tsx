@@ -166,10 +166,12 @@ export const VehicleServicesHub: React.FC = () => {
           <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black">
             <Car className="w-6 h-6" />
           </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold">Vehicle Services Hub (Vahan Next)</h2>
+          <h2 className="text-xl sm:text-2xl font-extrabold">
+            {t.vehicleServicesTitle}
+          </h2>
         </div>
         <p className="text-xs sm:text-sm text-blue-200 max-w-2xl leading-relaxed">
-          Access all vehicle-related services completely online. Step-by-step guided forms, instant Aadhaar e-Sign, and transparent government fee payment.
+          {t.vehicleServicesSubtitle}
         </p>
 
         {/* Filter & Search Bar */}

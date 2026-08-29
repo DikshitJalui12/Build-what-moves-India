@@ -18,7 +18,7 @@ import { useApp } from '../../context/AppContext';
 import { GrievanceTicket } from '../../types';
 
 export const HelpCenter: React.FC = () => {
-  const { grievances, addGrievance, user, setIsSaathiModalOpen } = useApp();
+  const { grievances, addGrievance, user, setIsSaathiModalOpen, t } = useApp();
 
   const [activeTab, setActiveTab] = useState<'faq' | 'grievance' | 'contact'>('faq');
   const [searchFaq, setSearchFaq] = useState('');
@@ -34,23 +34,23 @@ export const HelpCenter: React.FC = () => {
   const faqs = [
     {
       q: 'How does Parivahan Next unify Vahan (Vehicles) and Sarathi (Licences)?',
-      a: 'Parivahan Next links all your vehicles and driving licences under your authenticated Aadhaar / DigiLocker identity. One single login grants access to all registered cars, two-wheelers, driving licences, active applications, and challans with zero duplicate account registrations.',
+      a: 'Parivahan Next links all your vehicles and driving licences under your authenticated digital identity. One single login grants access to all registered cars, two-wheelers, driving licences, active applications, and challans with zero duplicate account registrations.',
     },
     {
       q: 'What is the procedure for vehicle ownership transfer without visiting an RTO?',
-      a: 'The registered seller initiates the transfer on the portal by entering the buyer’s mobile/Aadhaar number. The buyer receives a digital consent request, confirms ownership transfer, and pays statutory transfer fees. Form 29 & Form 30 are auto-generated with digital signatures, eliminating paper visits.',
+      a: 'The registered seller initiates the transfer on the portal by entering the buyer’s mobile/digital identity. The buyer receives a digital consent request, confirms ownership transfer, and pays statutory transfer fees. Form 29 & Form 30 are auto-generated with digital signatures, eliminating paper visits.',
     },
     {
       q: 'How does the online Learner’s Licence (LL) test work?',
-      a: 'After completing Aadhaar e-KYC, you take an online 15-question road safety mock test directly on this portal. If you score 60% or higher (9+ correct answers), your provisional Form 3 Learner’s Licence is immediately issued to your Document Vault.',
+      a: 'After completing digital identity verification, you take an online 15-question road safety mock test directly on this portal. If you score 60% or higher (9+ correct answers), your provisional Form 3 Learner’s Licence is immediately issued to your Document Vault.',
     },
     {
       q: 'What should I do if a payment fails during fee checkout?',
       a: 'BharatKosh payment gateway includes automatic reconciliation. If your money is deducted, your transaction status will automatically update within 15 minutes. Alternatively, you can click "Retry Payment" or re-check the Payment History tab.',
     },
     {
-      q: 'Are digital RC and DL in this portal legally valid for traffic police inspection?',
-      a: 'Yes. Under Rule 139 of the Central Motor Vehicles Rules and MoRTH notifications, digital documents stored in Parivahan Next / DigiLocker carrying cryptographic QR verification stamps are legally equivalent to physical plastic smartcards.',
+      q: 'Are digital RC and DL in this portal legally valid for traffic inspection?',
+      a: 'Yes. Under central transport rules and national notifications, digital documents stored in Parivahan Next / DigiLocker carrying cryptographic QR verification stamps are legally equivalent to physical plastic smartcards.',
     },
     {
       q: 'When should I renew my vehicle Registration Certificate (RC)?',
@@ -58,24 +58,26 @@ export const HelpCenter: React.FC = () => {
     },
   ];
 
-  const handleGrievanceSubmit = (e: React.FormEvent) => {
+  const handleLodgeGrievance = (e: React.FormEvent) => {
     e.preventDefault();
-    const token = `MORTH-GRV-2026-${Math.floor(10000 + Math.random() * 90000)}`;
+    if (!grvSubject.trim() || !grvDescription.trim()) return;
+
+    const token = `CPG-${Date.now().toString().slice(-6)}`;
     const newTicket: GrievanceTicket = {
-      id: `GRV-${Date.now()}`,
+      id: `grv-${Date.now()}`,
       tokenNo: token,
       citizenName: user?.name || 'Citizen',
-      citizenMobile: user?.mobile || '+91 9876543210',
-      email: user?.email || 'citizen@nic.in',
+      citizenMobile: user?.mobile || '+91 98765 43210',
+      email: user?.email || 'citizen@email.com',
       category: grvCategory,
       rtoCode: 'DL-01',
-      rtoName: 'RTO Mall Road',
+      rtoName: 'Regional Transport Office Mall Road',
       subject: grvSubject,
       description: grvDescription,
       applicationNoOrRegNo: grvIdentifier,
       status: 'REGISTERED',
       createdAt: new Date().toISOString().split('T')[0],
-      slaDeadline: 'Within 7 Working Days (Citizen Charter SLA)',
+      slaDeadline: new Date(Date.now() + 7 * 86400000).toISOString().split('T')[0],
     };
 
     addGrievance(newTicket);
@@ -99,10 +101,10 @@ export const HelpCenter: React.FC = () => {
             <div className="w-10 h-10 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-black">
               <HelpCircle className="w-6 h-6" />
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold">Help & Grievance Redressal Center</h2>
+            <h2 className="text-xl sm:text-2xl font-extrabold">{t.helpTitle}</h2>
           </div>
           <p className="text-xs sm:text-sm text-blue-200 max-w-xl">
-            Frequently asked questions, grievance tracking (CPGRAMS), emergency toll-free helplines, and 24x7 AI assistance.
+            {t.helpSubtitle}
           </p>
         </div>
 
@@ -111,7 +113,7 @@ export const HelpCenter: React.FC = () => {
           className="bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white text-xs font-black px-4 py-2.5 rounded-xl shadow-md transition flex items-center gap-2 cursor-pointer shrink-0"
         >
           <Sparkles className="w-4 h-4" />
-          <span>Ask Parivahan Saathi AI</span>
+          <span>{t.askSaathi}</span>
         </button>
       </div>
 
@@ -209,7 +211,7 @@ export const HelpCenter: React.FC = () => {
               </div>
             )}
 
-            <form onSubmit={handleGrievanceSubmit} className="space-y-4">
+            <form onSubmit={handleLodgeGrievance} className="space-y-4">
               <div>
                 <label className="block font-bold text-slate-700 mb-1">Grievance Category</label>
                 <select

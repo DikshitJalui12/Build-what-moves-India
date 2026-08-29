@@ -61,7 +61,7 @@ export const PaymentModal: React.FC = () => {
             : 'Debit / Credit Card',
         paymentDate: new Date().toLocaleString('en-IN'),
         applicantName: user?.name || 'Citizen',
-        rtoName: 'Transport Department, Government of India',
+        rtoName: 'Regional Transport Authority (RTO)',
       };
 
       paymentModal.onSuccess(receipt);
@@ -89,7 +89,7 @@ export const PaymentModal: React.FC = () => {
             <div>
               <h3 className="text-base font-extrabold">BharatKosh Non-Tax Gateway</h3>
               <p className="text-xs text-blue-200">
-                Official Ministry of Road Transport & Highways Payment Desk
+                Secure Citizen Transport Payment Desk
               </p>
             </div>
           </div>

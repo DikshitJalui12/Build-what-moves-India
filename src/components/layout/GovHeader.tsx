@@ -62,15 +62,15 @@ export const GovHeader: React.FC = () => {
         <div className="flex items-center gap-3">
           <span className="font-semibold tracking-wide flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            GOVERNMENT OF INDIA • भारत सरकार
+            {t.portalName} • {t.portalSubtitle}
           </span>
           <span className="bg-amber-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider hidden sm:inline">
-            {t.hackathonPrototypeBadge}
+            {t.hackathonBadge}
           </span>
           <span className="hidden lg:inline text-slate-400">|</span>
           <span className="hidden lg:flex items-center gap-1 text-slate-300">
             <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
-            Helpline: <strong className="text-white ml-1">1033 / 1073</strong> (Toll Free)
+            {t.helpline}
           </span>
         </div>
 
@@ -83,7 +83,7 @@ export const GovHeader: React.FC = () => {
             title="Ask Parivahan Saathi AI"
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>{t.aiAssistantTrigger}</span>
+            <span>{t.askSaathi}</span>
           </button>
 
           {/* Voice Screen Reader */}
@@ -96,7 +96,7 @@ export const GovHeader: React.FC = () => {
             aria-label="Toggle Voice Assistant"
           >
             {speechEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
-            <span className="hidden sm:inline">Voice</span>
+            <span className="hidden sm:inline">{t.voice}</span>
           </button>
 
           {/* High Contrast */}
@@ -107,7 +107,7 @@ export const GovHeader: React.FC = () => {
             aria-label="High Contrast"
           >
             {highContrast ? <Sun className="w-3.5 h-3.5 text-yellow-300" /> : <Moon className="w-3.5 h-3.5" />}
-            <span className="hidden sm:inline">Contrast</span>
+            <span className="hidden sm:inline">{t.contrast}</span>
           </button>
 
           {/* Font Size Adjuster */}
@@ -180,12 +180,12 @@ export const GovHeader: React.FC = () => {
               <h1 className="text-xl sm:text-2xl font-extrabold text-blue-950 tracking-tight flex items-center gap-2">
                 <span>{t.portalName}</span>
                 <span className="bg-emerald-600 text-white text-[11px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                  2.0 Unified
+                  2.0
                 </span>
               </h1>
             </div>
             <p className="text-xs text-slate-600 font-medium">
-              {t.morthTitle} • भारत सरकार
+              {t.portalSubtitle}
             </p>
           </div>
         </div>
@@ -202,7 +202,7 @@ export const GovHeader: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Citizen View
+              {t.citizenView}
             </button>
             <button
               onClick={() => setRole('officer')}
@@ -212,7 +212,7 @@ export const GovHeader: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              RTO Officer Desk
+              {t.officerDesk}
             </button>
             <button
               onClick={() => setRole('admin')}
@@ -222,7 +222,7 @@ export const GovHeader: React.FC = () => {
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
-              Admin Audit
+              {t.adminAudit}
             </button>
           </div>
 
@@ -233,7 +233,7 @@ export const GovHeader: React.FC = () => {
             className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 hover:text-rose-700 bg-slate-100 hover:bg-rose-50 px-2.5 py-1 rounded-lg border border-slate-200 transition cursor-pointer font-medium"
           >
             <RotateCcw className="w-3.5 h-3.5" />
-            <span>Reset Demo</span>
+            <span>{t.resetDemo}</span>
           </button>
 
           {/* Notification Bell */}

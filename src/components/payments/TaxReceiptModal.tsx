@@ -4,7 +4,7 @@ import { useApp } from '../../context/AppContext';
 import { formatCurrency } from '../../utils/helpers';
 
 export const TaxReceiptModal: React.FC = () => {
-  const { receiptModalData, closeReceiptModal } = useApp();
+  const { receiptModalData, closeReceiptModal, t } = useApp();
 
   if (!receiptModalData) return null;
 
@@ -15,7 +15,7 @@ export const TaxReceiptModal: React.FC = () => {
         <div className="bg-slate-900 text-white px-6 py-4 flex items-center justify-between no-print">
           <div className="flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
-            <h3 className="font-bold text-sm">Official BharatKosh Tax Invoice</h3>
+            <h3 className="font-bold text-sm">{t.portalName} {t.downloadReceipt}</h3>
           </div>
           <div className="flex items-center gap-2">
             <button
@@ -36,19 +36,19 @@ export const TaxReceiptModal: React.FC = () => {
 
         {/* Printable Receipt Layout */}
         <div className="p-8 overflow-y-auto space-y-6 text-xs bg-slate-50 font-sans">
-          {/* Gov Top Header */}
+          {/* Top Header */}
           <div className="text-center border-b-2 border-slate-300 pb-4 bg-white p-6 rounded-2xl shadow-xs border">
             <div className="w-12 h-12 bg-blue-900 text-amber-400 rounded-full flex items-center justify-center mx-auto font-black text-base mb-2">
-              IN
+              PN
             </div>
             <h2 className="text-sm sm:text-base font-extrabold text-blue-950 uppercase tracking-wide">
-              Government of India • भारत सरकार
+              {t.portalName}
             </h2>
             <h3 className="text-xs font-bold text-slate-700 mt-1 uppercase">
-              Ministry of Road Transport & Highways (MoRTH)
+              {t.portalSubtitle}
             </h3>
             <p className="text-[11px] text-slate-500 mt-0.5 font-mono">
-              BharatKosh Non-Tax Receipts Portal • E-Receipt
+              Digital Payment Verification Receipt
             </p>
           </div>
 

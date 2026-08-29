@@ -1,24 +1,24 @@
 import React from 'react';
-import { Shield, ExternalLink, Heart, Globe2 } from 'lucide-react';
+import { Shield, ExternalLink, Globe2 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export const Footer: React.FC = () => {
-  const { setActiveNavTab, setActiveServiceWizard } = useApp();
+  const { setActiveNavTab, setActiveServiceWizard, t } = useApp();
 
   return (
     <footer className="bg-slate-900 text-slate-300 text-xs border-t-4 border-amber-500 mt-auto pt-10 pb-20 md:pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-800">
-          {/* Col 1: Ministry Info */}
+          {/* Col 1: Platform Info */}
           <div>
             <div className="flex items-center gap-2 mb-3">
               <div className="w-8 h-8 rounded-lg bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-sm">
                 PN
               </div>
-              <span className="font-bold text-white text-sm">Parivahan Next 2.0</span>
+              <span className="font-bold text-white text-sm">{t.portalName} 2.0</span>
             </div>
             <p className="text-slate-400 leading-relaxed text-[11px] mb-3">
-              Designed & Developed to unify India's vehicle registration (Vahan), driving licensing (Sarathi), and traffic enforcement (eChallan) systems under Digital India.
+              {t.footerDesc}
             </p>
             <div className="flex items-center gap-2 text-emerald-400 font-semibold text-[11px]">
               <Shield className="w-4 h-4" />
@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
           {/* Col 2: Quick Vehicle Services */}
           <div>
             <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">
-              Vehicle Services
+              {t.vehicleServicesTitle}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -40,7 +40,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Transfer of Vehicle Ownership
+                  {t.transferOwnership}
                 </button>
               </li>
               <li>
@@ -51,7 +51,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  15-Year RC Renewal & Fitness
+                  {t.renewRC}
                 </button>
               </li>
               <li>
@@ -62,7 +62,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Hypothecation / Bank NOC Clearance
+                  Bank NOC / Hypothecation
                 </button>
               </li>
               <li>
@@ -73,7 +73,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Choice & VIP Number Plate Booking
+                  Choice & VIP Number Booking
                 </button>
               </li>
               <li>
@@ -84,7 +84,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Interstate No Objection Certificate (NOC)
+                  {t.applyInterstateNOC}
                 </button>
               </li>
             </ul>
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
           {/* Col 3: Driving Licence Services */}
           <div>
             <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">
-              Licence Services
+              {t.dlServicesTitle}
             </h4>
             <ul className="space-y-2">
               <li>
@@ -104,7 +104,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  New Learner’s Licence (e-KYC & Test)
+                  {t.learnerLicence}
                 </button>
               </li>
               <li>
@@ -115,7 +115,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Convert to Permanent Driving Licence
+                  {t.permanentDL}
                 </button>
               </li>
               <li>
@@ -137,7 +137,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Driving Licence Renewal
+                  Licence Renewal
                 </button>
               </li>
               <li>
@@ -148,7 +148,7 @@ export const Footer: React.FC = () => {
                   }}
                   className="hover:text-amber-400 transition cursor-pointer text-left"
                 >
-                  Add Vehicle Class to Licence
+                  Add Vehicle Class
                 </button>
               </li>
             </ul>
@@ -157,20 +157,9 @@ export const Footer: React.FC = () => {
           {/* Col 4: Public Links & Portals */}
           <div>
             <h4 className="text-white font-bold text-xs uppercase tracking-wider mb-3">
-              Government Portals
+              Digital Resources
             </h4>
             <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://morth.nic.in"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-1.5 hover:text-amber-400 transition"
-                >
-                  <span>MoRTH Official Website</span>
-                  <ExternalLink className="w-3 h-3 text-slate-500" />
-                </a>
-              </li>
               <li>
                 <a
                   href="https://digitallocker.gov.in"
@@ -178,7 +167,7 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="flex items-center gap-1.5 hover:text-amber-400 transition"
                 >
-                  <span>DigiLocker India</span>
+                  <span>DigiLocker Service</span>
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               </li>
@@ -189,7 +178,7 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="flex items-center gap-1.5 hover:text-amber-400 transition"
                 >
-                  <span>CPGRAMS Citizen Grievance</span>
+                  <span>CPGRAMS Grievance Portal</span>
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               </li>
@@ -200,7 +189,7 @@ export const Footer: React.FC = () => {
                   rel="noreferrer"
                   className="flex items-center gap-1.5 hover:text-amber-400 transition"
                 >
-                  <span>BharatKosh Non-Tax Receipts</span>
+                  <span>BharatKosh Gateway</span>
                   <ExternalLink className="w-3 h-3 text-slate-500" />
                 </a>
               </li>
@@ -209,7 +198,7 @@ export const Footer: React.FC = () => {
                   onClick={() => setActiveNavTab('help')}
                   className="hover:text-amber-400 transition cursor-pointer text-left text-amber-300 font-semibold"
                 >
-                  Grievance Redressal & RTO Contacts &rarr;
+                  {t.helpTitle} &rarr;
                 </button>
               </li>
             </ul>
@@ -219,9 +208,9 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright & hackathon disclaimer line */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
           <div>
-            © 2026 Ministry of Road Transport & Highways, Government of India.
+            © 2026 {t.portalName}.
             <div className="text-amber-400/90 font-medium text-[10px] mt-0.5">
-              ⚠️ Hackathon Innovation Prototype • Uses Synthetic Mock Data • Not an official government deployment.
+              ⚠️ {t.footerDisclaimer}
             </div>
           </div>
           <div className="flex items-center gap-3">

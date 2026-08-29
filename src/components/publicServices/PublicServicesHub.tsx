@@ -146,21 +146,21 @@ export const PublicServicesHub: React.FC = () => {
             <Search className="w-6 h-6" />
           </div>
           <h2 className="text-xl sm:text-2xl font-extrabold">
-            Public Services & Verification Hub
+            {t.publicHubTitle}
           </h2>
         </div>
         <p className="text-xs sm:text-sm text-blue-200 max-w-2xl leading-relaxed">
-          Open citizen tools with zero login requirement. Search vehicle records, verify driving licences, pay e-challans, locate RTO offices, and calculate government fees.
+          {t.publicHubSubtitle}
         </p>
 
         {/* Tab Buttons */}
         <div className="mt-6 flex items-center gap-2 overflow-x-auto scrollbar-none">
           {[
-            { id: 'rc', label: 'Know Your Vehicle (RC)', icon: Car },
-            { id: 'challan', label: 'e-Challan & Traffic Fines', icon: AlertTriangle },
-            { id: 'dl', label: 'Verify Driving Licence', icon: CreditCard },
-            { id: 'rto', label: 'RTO Office Locator', icon: MapPin },
-            { id: 'calculator', label: 'Service Fee Calculator', icon: Calculator },
+            { id: 'rc', label: t.knowYourVehicle, icon: Car },
+            { id: 'challan', label: t.checkChallan, icon: AlertTriangle },
+            { id: 'dl', label: t.verifyDL, icon: CreditCard },
+            { id: 'rto', label: t.rtoLocator, icon: MapPin },
+            { id: 'calculator', label: t.feeCalculator, icon: Calculator },
           ].map((tab) => {
             const Icon = tab.icon;
             const isActive = activeTab === tab.id;
