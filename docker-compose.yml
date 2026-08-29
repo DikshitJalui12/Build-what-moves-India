@@ -1,0 +1,18 @@
+services:
+  parivahan-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: morth/parivahan-next:2.0.0
+    container_name: parivahan-next-app
+    restart: always
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:8080/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+    environment:
+      - NODE_ENV=production

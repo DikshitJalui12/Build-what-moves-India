@@ -1,0 +1,34 @@
+name: Parivahan Next CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  audit-and-build:
+    name: Security Audit, Type Check & Build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run Security Audit
+        run: npm audit --audit-level=high
+
+      - name: Type Check & Production Bundle Build
+        run: npm run build
+
+      - name: Verify Dist Artifact
+        run: test -f dist/index.html && echo "Production build successfully verified."
