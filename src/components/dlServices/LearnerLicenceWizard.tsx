@@ -403,11 +403,29 @@ export const LearnerLicenceWizard: React.FC<{ onCancel: () => void }> = ({ onCan
                       Question <strong>{currentQuestionIdx + 1}</strong> of {LEARNER_MOCK_QUESTIONS.length}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1.5 font-mono text-amber-300 font-bold">
-                    <Clock className="w-4 h-4" />
-                    <span>
-                      {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
-                    </span>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        const passedAnswers: Record<number, number> = {};
+                        LEARNER_MOCK_QUESTIONS.forEach((q, idx) => {
+                          passedAnswers[idx] = q.correctAnswerIndex;
+                        });
+                        setUserAnswers(passedAnswers);
+                        setScore(15);
+                        setTestPassed(true);
+                        setTestCompleted(true);
+                      }}
+                      className="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold px-2.5 py-1 rounded-lg text-[11px] transition cursor-pointer"
+                    >
+                      ⚡ Quick Pass (Demo)
+                    </button>
+                    <div className="flex items-center gap-1.5 font-mono text-amber-300 font-bold">
+                      <Clock className="w-4 h-4" />
+                      <span>
+                        {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}
+                      </span>
+                    </div>
                   </div>
                 </div>
 

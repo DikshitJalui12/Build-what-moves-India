@@ -60,14 +60,14 @@ export const CitizenDashboard: React.FC = () => {
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <span className="bg-amber-400 text-slate-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">
-                  Citizen Identity Linked
+                  {t.citizenIdentityLinked}
                 </span>
                 <span className="text-emerald-400 text-xs font-semibold flex items-center gap-1">
-                  <ShieldCheck className="w-3.5 h-3.5" /> DigiLocker Verified
+                  <ShieldCheck className="w-3.5 h-3.5" /> {t.digiLockerBadge}
                 </span>
               </div>
               <h2 className="text-xl sm:text-3xl font-extrabold tracking-tight">
-                Welcome back, {user?.name || 'Citizen'}
+                {t.welcomeCitizen}, {user?.name || 'Citizen'}
               </h2>
               <p className="text-xs sm:text-sm text-blue-200 mt-1">
                 Aadhaar: <span className="font-mono">{user?.aadhaar}</span> • {user?.district}, {user?.state} ({user?.pincode})
@@ -79,17 +79,17 @@ export const CitizenDashboard: React.FC = () => {
           <div className="grid grid-cols-3 gap-3 w-full md:w-auto">
             <div className="bg-white/10 backdrop-blur-xs rounded-2xl p-3 sm:px-4 border border-white/15 text-center">
               <div className="text-2xl font-black text-amber-400">{vehicles.length}</div>
-              <div className="text-[11px] text-blue-200 font-medium">Vehicles (Garage)</div>
+              <div className="text-[11px] text-blue-200 font-medium">{t.vehiclesGarage}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xs rounded-2xl p-3 sm:px-4 border border-white/15 text-center">
               <div className="text-2xl font-black text-emerald-400">
-                {drivingLicence ? 'Active' : 'None'}
+                {drivingLicence ? t.valid : 'None'}
               </div>
-              <div className="text-[11px] text-blue-200 font-medium">Driving Licence</div>
+              <div className="text-[11px] text-blue-200 font-medium">{t.drivingLicenceActive}</div>
             </div>
             <div className="bg-white/10 backdrop-blur-xs rounded-2xl p-3 sm:px-4 border border-white/15 text-center">
               <div className="text-2xl font-black text-blue-300">{applications.length}</div>
-              <div className="text-[11px] text-blue-200 font-medium">Applications</div>
+              <div className="text-[11px] text-blue-200 font-medium">{t.applicationsActive}</div>
             </div>
           </div>
         </div>
@@ -156,9 +156,9 @@ export const CitizenDashboard: React.FC = () => {
               <Car className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Transfer Ownership
+              {t.transferOwnership}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Buyer-Seller Form 29/30</div>
+            <div className="text-[10px] text-slate-500 mt-1">Form 29 / 30</div>
           </button>
 
           <button
@@ -172,9 +172,9 @@ export const CitizenDashboard: React.FC = () => {
               <CreditCard className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Learner’s Licence
+              {t.learnerLicence}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Aadhaar e-KYC & Test</div>
+            <div className="text-[10px] text-slate-500 mt-1">e-KYC & Mock Test</div>
           </button>
 
           <button
@@ -188,9 +188,9 @@ export const CitizenDashboard: React.FC = () => {
               <Clock className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Renew RC (15+ Yr)
+              {t.renewRC}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Fitness & Re-register</div>
+            <div className="text-[10px] text-slate-500 mt-1">15+ Year Fitness</div>
           </button>
 
           <button
@@ -203,9 +203,9 @@ export const CitizenDashboard: React.FC = () => {
               <Calendar className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Book RTO Slot
+              {t.bookSlot}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Calendar & QR Pass</div>
+            <div className="text-[10px] text-slate-500 mt-1">QR Entry Pass</div>
           </button>
 
           <button
@@ -216,9 +216,9 @@ export const CitizenDashboard: React.FC = () => {
               <AlertTriangle className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Pay e-Challan
+              {t.payChallans}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Camera Fine Clearance</div>
+            <div className="text-[10px] text-slate-500 mt-1">Camera Evidence</div>
           </button>
 
           <button
@@ -229,9 +229,9 @@ export const CitizenDashboard: React.FC = () => {
               <Download className="w-5 h-5" />
             </div>
             <div className="font-extrabold text-xs text-slate-900 leading-snug">
-              Download Docs
+              {t.navVault}
             </div>
-            <div className="text-[10px] text-slate-500 mt-1">Smartcards & Certificates</div>
+            <div className="text-[10px] text-slate-500 mt-1">DigiLocker Smartcards</div>
           </button>
         </div>
       </div>

@@ -114,6 +114,7 @@ interface AppContextType {
   receiptModalData: any | null;
   openReceiptModal: (receipt: any) => void;
   closeReceiptModal: () => void;
+  resetDemoData: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -499,6 +500,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setReceiptModalData(null);
   };
 
+  const resetDemoData = () => {
+    try {
+      localStorage.clear();
+    } catch {}
+    setUser(INITIAL_USER);
+    setVehicles(INITIAL_VEHICLES);
+    setApplications(INITIAL_APPLICATIONS);
+    setChallans(INITIAL_CHALLANS);
+    setAppointments(INITIAL_APPOINTMENTS);
+    setVaultDocs(INITIAL_VAULT_DOCS);
+    setNotifications(INITIAL_NOTIFICATIONS);
+    setGrievances(INITIAL_GRIEVANCES);
+    setDrafts({});
+    setActiveServiceWizard(null);
+    setActiveNavTab('home');
+  };
+
   const t = TRANSLATIONS[activeLang] || TRANSLATIONS.en;
 
   return (
@@ -558,6 +576,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         receiptModalData,
         openReceiptModal,
         closeReceiptModal,
+        resetDemoData,
       }}
     >
       {children}

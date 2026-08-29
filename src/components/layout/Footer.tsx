@@ -216,18 +216,21 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom copyright line */}
+        {/* Bottom copyright & hackathon disclaimer line */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
           <div>
-            © 2026 Ministry of Road Transport & Highways, Government of India. All Rights Reserved.
+            © 2026 Ministry of Road Transport & Highways, Government of India.
+            <div className="text-amber-400/90 font-medium text-[10px] mt-0.5">
+              ⚠️ Hackathon Innovation Prototype • Uses Synthetic Mock Data • Not an official government deployment.
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <span className="flex items-center gap-1">
-              <Globe2 className="w-3.5 h-3.5 text-amber-400" /> Built for Digital India
+              <Globe2 className="w-3.5 h-3.5 text-amber-400" /> Digital Public Infrastructure
             </span>
             <span>•</span>
             <span className="flex items-center gap-1 text-slate-300">
-              National Informatics Centre (NIC) Powered
+              Powered by OpenAI / Codex
             </span>
           </div>
         </div>

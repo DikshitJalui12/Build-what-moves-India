@@ -116,7 +116,7 @@ export const Navbar: React.FC = () => {
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
-                  <span>{item.label.split(' ')[0]}</span>
+                  <span className="truncate max-w-[90px]">{item.label}</span>
                 </button>
               );
             })}

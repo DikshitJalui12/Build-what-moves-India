@@ -25,7 +25,7 @@ interface VehicleCardProps {
 }
 
 export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick }) => {
-  const { setActiveNavTab, setActiveServiceWizard, openAppointmentModal, vaultDocs } = useApp();
+  const { setActiveNavTab, setActiveServiceWizard, openAppointmentModal, vaultDocs, t } = useApp();
   const [isActionsOpen, setIsActionsOpen] = useState(false);
 
   const insBadge = getStatusBadgeColor(vehicle.insurance.status);
@@ -105,11 +105,11 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Insurance */}
           <div className={`p-2 rounded-xl border text-left ${insBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">INSURANCE</span>
+              <span className="text-[10px] font-bold opacity-75">{t.insuranceValid}</span>
               <Shield className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
-              {vehicle.insurance.status === 'EXPIRED' ? 'EXPIRED' : vehicle.insurance.status === 'EXPIRING_SOON' ? 'RENEW NOW' : 'ACTIVE'}
+              {vehicle.insurance.status === 'EXPIRED' ? t.expired : vehicle.insurance.status === 'EXPIRING_SOON' ? t.expiringSoon : t.valid}
             </div>
             <div className="text-[10px] opacity-75 mt-0.5 truncate">
               {formatDate(vehicle.insurance.validTill)}
@@ -119,11 +119,11 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* PUC Pollution */}
           <div className={`p-2 rounded-xl border text-left ${pucBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">PUC (POLLUTION)</span>
+              <span className="text-[10px] font-bold opacity-75">{t.pucValid}</span>
               <RefreshCw className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
-              {vehicle.puc.status === 'EXPIRED' ? 'EXPIRED' : vehicle.puc.status === 'EXPIRING_SOON' ? 'RENEW NOW' : 'VALID'}
+              {vehicle.puc.status === 'EXPIRED' ? t.expired : vehicle.puc.status === 'EXPIRING_SOON' ? t.expiringSoon : t.valid}
             </div>
             <div className="text-[10px] opacity-75 mt-0.5 truncate">
               {formatDate(vehicle.puc.validTill)}
@@ -133,7 +133,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Fitness Certificate */}
           <div className={`p-2 rounded-xl border text-left ${fitBadge.bg}`}>
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">FITNESS</span>
+              <span className="text-[10px] font-bold opacity-75">{t.fitnessValid}</span>
               <FileText className="w-3 h-3" />
             </div>
             <div className="font-bold text-xs leading-tight">
@@ -147,7 +147,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
           {/* Road Tax Status */}
           <div className="p-2 rounded-xl border bg-blue-50 text-blue-900 border-blue-200 text-left">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-[10px] font-bold opacity-75">ROAD TAX</span>
+              <span className="text-[10px] font-bold opacity-75">{t.taxPaid}</span>
               <Landmark className="w-3 h-3 text-blue-700" />
             </div>
             <div className="font-bold text-xs leading-tight">LIFETIME PAID</div>
@@ -189,7 +189,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
             }}
             className="bg-blue-900 hover:bg-blue-950 text-white text-xs font-bold px-3 py-1.5 rounded-lg shadow-2xs transition cursor-pointer"
           >
-            Transfer Ownership
+            {t.transferOwnership}
           </button>
           <button
             onClick={() => {
@@ -198,7 +198,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
             }}
             className="bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-xs font-bold px-3 py-1.5 rounded-lg transition cursor-pointer"
           >
-            Renew RC
+            {t.renewRC}
           </button>
         </div>
 
@@ -207,7 +207,7 @@ export const VehicleCard: React.FC<VehicleCardProps> = ({ vehicle, onActionClick
             onClick={() => setIsActionsOpen(!isActionsOpen)}
             className="flex items-center gap-1 text-xs font-bold text-slate-700 hover:text-blue-900 bg-white border border-slate-300 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 transition cursor-pointer"
           >
-            <span>More Actions</span>
+            <span>{t.moreActions}</span>
             <ChevronDown className="w-3.5 h-3.5" />
           </button>
 

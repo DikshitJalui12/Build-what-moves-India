@@ -14,7 +14,8 @@ import {
   PhoneCall,
   CheckCircle2,
   AlertTriangle,
-  FileText
+  FileText,
+  RotateCcw
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { LANGUAGES } from '../../i18n/translations';
@@ -37,6 +38,7 @@ export const GovHeader: React.FC = () => {
     notifications,
     markNotificationRead,
     markAllNotificationsRead,
+    resetDemoData,
     loginUser,
     logoutUser,
     setIsAuthModalOpen,
@@ -57,15 +59,18 @@ export const GovHeader: React.FC = () => {
 
       {/* Accessibility & Helpline Strip */}
       <div className="bg-slate-900 text-slate-200 text-xs px-4 py-1.5 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
           <span className="font-semibold tracking-wide flex items-center gap-1.5">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
             GOVERNMENT OF INDIA • भारत सरकार
           </span>
-          <span className="hidden sm:inline text-slate-400">|</span>
-          <span className="hidden md:flex items-center gap-1 text-slate-300">
+          <span className="bg-amber-400 text-slate-950 font-black text-[10px] px-2 py-0.5 rounded-full uppercase tracking-wider hidden sm:inline">
+            {t.hackathonPrototypeBadge}
+          </span>
+          <span className="hidden lg:inline text-slate-400">|</span>
+          <span className="hidden lg:flex items-center gap-1 text-slate-300">
             <PhoneCall className="w-3.5 h-3.5 text-amber-400" />
-            National Highway Helpline: <strong className="text-white ml-1">1033 / 1073</strong> (Toll Free)
+            Helpline: <strong className="text-white ml-1">1033 / 1073</strong> (Toll Free)
           </span>
         </div>
 
@@ -220,6 +225,16 @@ export const GovHeader: React.FC = () => {
               Admin Audit
             </button>
           </div>
+
+          {/* Quick Demo Reset Button */}
+          <button
+            onClick={resetDemoData}
+            title="Reset demo data to initial state"
+            className="hidden md:flex items-center gap-1.5 text-xs text-slate-500 hover:text-rose-700 bg-slate-100 hover:bg-rose-50 px-2.5 py-1 rounded-lg border border-slate-200 transition cursor-pointer font-medium"
+          >
+            <RotateCcw className="w-3.5 h-3.5" />
+            <span>Reset Demo</span>
+          </button>
 
           {/* Notification Bell */}
           <div className="relative">
